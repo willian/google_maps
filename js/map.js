@@ -1,16 +1,16 @@
-var Map = {};
-var map;
+var Map                = {};
+var directionsService  = new google.maps.DirectionsService();
+var polygon_coords     = [];
+var waypts             = [];
 var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
-var waypts = [];
+var map;
 var polygon;
-var polygon_coords = [];
 
 Map['initialize'] = function() {
   directionsDisplay = new google.maps.DirectionsRenderer();
   var hotel = new google.maps.LatLng(HOTEL_COORDS.latitude, HOTEL_COORDS.longitude);
   var myOptions = {
-    zoom:12,
+    zoom: 12,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: hotel
   };
@@ -68,7 +68,6 @@ Map['traceRoute'] = function() {
           icon: 'img/'+ (i+1) +'.png'
         });
       }
-      console.log(polygon_coords);
 
       // Polygon
       polygon = new google.maps.Polygon({
